@@ -10,6 +10,14 @@ public class MyLinkedList {
     return size;
   }
 
+  private Node findNode(int index) {
+    Node ans = start;
+    for (int i = 0; i < index; i++) {
+      ans = ans.getNext();
+    }
+    return ans;
+  }
+
   public boolean add(String value) {
     Node ans = new Node(value);
     if (size == 0) {
@@ -22,6 +30,20 @@ public class MyLinkedList {
     }
     size++;
     return true;
+  }
+
+  public void add(int index, String value) {
+    if (index < 0 || index > size()) {
+      throw new IndexOutOfBoundsException("Index " + index + " cannot exceed the size of MyLinkedList");
+    }
+
+  }
+
+  public String get(int index) {
+    if (index < 0 || index >= size()) {
+      throw new IndexOutOfBoundsException("Index " + index + " cannot be out of range of MyLinkedList");
+    }
+    return findNode(index).getData();
   }
 
 }
