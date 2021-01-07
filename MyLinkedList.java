@@ -38,28 +38,27 @@ public class MyLinkedList {
       throw new IndexOutOfBoundsException("Index " + index + " cannot exceed the size of MyLinkedList");
     }
 
-    //EMPTY list and TAIL node
-    if (size == 0 || index == size - 1) {
-      add(value);
-    }
-
     Node ans = new Node(value);
-
-    //HEAD node
-    if (index == 0) {
+    if (size == 0) {  //EMPTY list
+      start = ans;
+      end = ans;
+    } else if (index == size) {  //TAIL node
+      ans.setPrev(end);
+      end.setNext(ans);
+      end = ans;
+    } else if (index == 0) {  //HEAD node
       //have to set prev and next first or else I lose start
       start.setPrev(ans);
       ans.setNext(start);
       start = ans;
+    } else {  //All other nodes (middle node)
+      Node next = findNode(index);
+      Node prev = next.getPrev();
+      ans.setPrev(prev);
+      next.setPrev(ans);
+      ans.setNext(next);
+      prev.setNext(ans);  //nodes in front AND back of middle node are affected
     }
-
-    //All other nodes (middle node)
-    Node next = findNode(index);
-    Node prev = next.getPrev();
-    ans.setPrev(prev);
-    next.setPrev(ans);
-    ans.setNext(next);
-    prev.setNext(ans);  //nodes in front AND back of middle node are affected
 
     size++;
   }
