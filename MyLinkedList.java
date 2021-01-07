@@ -24,6 +24,7 @@ public class MyLinkedList {
       start = ans;
       end = ans;
     } else {
+      //have to set prev and next first or else I lose end
       ans.setPrev(end);
       end.setNext(ans);
       end = ans;
@@ -37,6 +38,18 @@ public class MyLinkedList {
       throw new IndexOutOfBoundsException("Index " + index + " cannot exceed the size of MyLinkedList");
     }
 
+    if (index == size - 1) {
+      add(value);
+    }
+
+    Node ans = new Node(value);
+    if (index == 0) {
+      //have to set prev and next first or else I lose start
+      start.setPrev(ans);
+      ans.setNext(start);
+      start = ans;
+    }
+    size++;
   }
 
   public String get(int index) {
@@ -54,6 +67,7 @@ public class MyLinkedList {
 
   public String toString() {
     if (size == 0) return "[]";
+
     Node current = start;
     String display = "[";
     while (current != null) {
