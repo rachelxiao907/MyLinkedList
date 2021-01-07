@@ -75,9 +75,10 @@ public class MyLinkedList {
     if (index < 0 || index >= size()) {
       throw new IndexOutOfBoundsException("Index " + index + " cannot be out of range of MyLinkedList");
     }
-    Node replaced = findNode(index);
-    replaced.setData(value);
-    return replaced.getData();
+    Node replace = findNode(index);
+    String old = replace.getData();
+    replace.setData(value);
+    return old;
   }
 
   public String toString() {
