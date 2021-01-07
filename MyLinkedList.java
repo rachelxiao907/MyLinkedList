@@ -46,4 +46,26 @@ public class MyLinkedList {
     return findNode(index).getData();
   }
 
+  // public String set(int index, String value) {
+  //   if (index < 0 || index >= size()) {
+  //     throw new IndexOutOfBoundsException("Index " + index + " cannot be out of range of MyLinkedList");
+  //   }
+  // }
+
+  public String toString() {
+    if (size == 0) return "[]";
+    Node current = start;
+    String display = "[";
+    while (current != null) {
+      display += current.getData();
+      if (current.getNext() != null) {
+        display += ", ";
+      } else {
+        display +=  "]";
+      }
+      current = current.getNext();
+    }
+    return display;
+  }
+
 }
