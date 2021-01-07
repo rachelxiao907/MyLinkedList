@@ -38,23 +38,29 @@ public class MyLinkedList {
       throw new IndexOutOfBoundsException("Index " + index + " cannot exceed the size of MyLinkedList");
     }
 
-    Node ans = new Node(value);
     //EMPTY list and TAIL node
     if (size == 0 || index == size - 1) {
       add(value);
-    } else if (index == 0) {    //HEAD node
+    }
+
+    Node ans = new Node(value);
+
+    //HEAD node
+    if (index == 0) {
       //have to set prev and next first or else I lose start
       start.setPrev(ans);
       ans.setNext(start);
       start = ans;
-    } else {       //All other nodes (middle node)
-      Node next = findNode(index);
-      Node prev = next.getPrev();
-      ans.setPrev(prev);
-      next.setPrev(ans);
-      ans.setNext(next);
-      prev.setNext(ans);  //nodes in front AND back of middle node are affected
     }
+
+    //All other nodes (middle node)
+    Node next = findNode(index);
+    Node prev = next.getPrev();
+    ans.setPrev(prev);
+    next.setPrev(ans);
+    ans.setNext(next);
+    prev.setNext(ans);  //nodes in front AND back of middle node are affected
+
     size++;
   }
 
@@ -65,11 +71,14 @@ public class MyLinkedList {
     return findNode(index).getData();
   }
 
-  // public String set(int index, String value) {
-  //   if (index < 0 || index >= size()) {
-  //     throw new IndexOutOfBoundsException("Index " + index + " cannot be out of range of MyLinkedList");
-  //   }
-  // }
+  public String set(int index, String value) {
+    if (index < 0 || index >= size()) {
+      throw new IndexOutOfBoundsException("Index " + index + " cannot be out of range of MyLinkedList");
+    }
+    Node replaced = findNode(index);
+    replaced.setData(value);
+    return replaced.getData();
+  }
 
   public String toString() {
     if (size == 0) return "[]";
