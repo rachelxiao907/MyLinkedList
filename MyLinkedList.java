@@ -112,4 +112,18 @@ public class MyLinkedList {
     return display;
   }
 
+  public String remove(int index) {
+    if (index < 0 || index >= size()) {
+      throw new IndexOutOfBoundsException("Index " + index + " cannot be out of range of MyLinkedList");
+    }
+    
+    String removed = findNode(index).getData();
+    if (size == 1) {   //removing the final element of a list
+      start = null;
+      end = null;
+    }
+    size--;
+    return removed;
+  }
+
 }
