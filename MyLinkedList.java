@@ -59,7 +59,6 @@ public class MyLinkedList {
       ans.setNext(next);
       prev.setNext(ans);  //nodes in front AND back of middle node are affected
     }
-
     size++;
   }
 
@@ -93,6 +92,22 @@ public class MyLinkedList {
         display +=  "]";
       }
       current = current.getNext();
+    }
+    return display;
+  }
+  public String toStringReversed() {
+    if (size == 0) return "[]";
+
+    Node current = end;
+    String display = "[";
+    while (current != null) {
+      display += current.getData();
+      if (current.getPrev() != null) {
+        display += ", ";
+      } else {
+        display +=  "]";
+      }
+      current = current.getPrev();
     }
     return display;
   }
