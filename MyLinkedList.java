@@ -140,4 +140,26 @@ public class MyLinkedList {
     return removed;
   }
 
+  /*
+  *@postcondition: All of the elements from other are removed from the other, and connected to the end of this linked list.
+  *@postcondition: The size of other is reduced to 0.
+  *@postcondition: The size of this is now the combined sizes of both original lists
+  */
+  public void extend(MyLinkedList other) {
+    if (size == 0 && other.size == 1) {
+      start = other.start;
+      end = other.end;
+    } else if (size == 0) {
+      start = other.start;
+      start.setNext(other.start);
+    } else {
+      end.setNext(other.start);
+      other.start.setPrev(end);
+    }
+
+    for (int i = 0; i < other.size; i++) {
+      other.remove(i);
+    }
+  }
+
 }
