@@ -116,11 +116,16 @@ public class MyLinkedList {
     if (index < 0 || index >= size()) {
       throw new IndexOutOfBoundsException("Index " + index + " cannot be out of range of MyLinkedList");
     }
-    
-    String removed = findNode(index).getData();
-    if (size == 1) {   //removing the final element of a list
+
+    Node ans = findNode(index);
+    String removed = ans.getData();
+    if (size == 1) {   //removing the FINAL element of a list
       start = null;
       end = null;
+    } else if (index == 0) {     //removing the HEAD
+      Node newStart = start.getNext();
+      newStart.setPrev(null);
+      start = newStart;
     }
     size--;
     return removed;
