@@ -130,6 +130,11 @@ public class MyLinkedList {
       Node newEnd = end.getPrev();
       newEnd.setNext(null);
       end = newEnd;
+    } else {   //removing from the MIDDLE
+      Node next = ans.getNext();
+      Node prev = ans.getPrev();
+      next.setPrev(prev);
+      prev.setNext(next);
     }
     size--;
     return removed;
