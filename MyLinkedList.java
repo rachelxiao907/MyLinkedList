@@ -122,10 +122,14 @@ public class MyLinkedList {
     if (size == 1) {   //removing the FINAL element of a list
       start = null;
       end = null;
-    } else if (index == 0) {     //removing the HEAD
+    } else if (index == 0) {   //removing the HEAD
       Node newStart = start.getNext();
       newStart.setPrev(null);
       start = newStart;
+    } else if (index == size - 1) {   //removing the TAIL
+      Node newEnd = end.getPrev();
+      newEnd.setNext(null);
+      end = newEnd;
     }
     size--;
     return removed;
