@@ -146,13 +146,8 @@ public class MyLinkedList {
   *@postcondition: The size of this is now the combined sizes of both original lists
   */
   public void extend(MyLinkedList other) {
-    if (size == 0 && other.size == 1) {
+    if (size == 0) {
       start = other.start;
-      end = other.end;
-    } else if (size == 0) {
-      start = other.start;
-      start.setNext(other.start);
-      other.start.setPrev(start);
       end = other.end;
     } else {
       end.setNext(other.start);
@@ -163,6 +158,7 @@ public class MyLinkedList {
     other.start = null;  //confused about why you can't use setData
     other.end = null;
     other.size = 0;
+    //what to do if other.size == 0??
   }
 
 }
