@@ -152,14 +152,17 @@ public class MyLinkedList {
     } else if (size == 0) {
       start = other.start;
       start.setNext(other.start);
+      other.start.setPrev(start);
+      end = other.end;
     } else {
       end.setNext(other.start);
       other.start.setPrev(end);
+      end = other.end;
     }
-
-    for (int i = 0; i < other.size; i++) {
-      other.remove(i);
-    }
+    size += other.size;
+    other.start = null;  //confused about why you can't use setData
+    other.end = null;
+    other.size = 0;
   }
 
 }
