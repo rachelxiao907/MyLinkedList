@@ -71,7 +71,6 @@ public class tester {
     System.out.println("EXTEND");
     MyLinkedList empty = new MyLinkedList();
     MyLinkedList other = r;
-    // MyLinkedList other = r;
     t.extend(other);
     System.out.println(t);
     String work = "";
@@ -89,7 +88,7 @@ public class tester {
     System.out.println(work + workSize);
     System.out.println();
 
-    System.out.println("Mr K extends");
+
     MyLinkedList a = new MyLinkedList();
     MyLinkedList b = new MyLinkedList();
     for(int i = 0; i < 10; i++){
@@ -99,7 +98,7 @@ public class tester {
         b.add(i+"");
       }
     }
-    System.out.println();
+    System.out.println("Mr K extends");
     System.out.println("A:"+a+a.size());
     System.out.println("B:"+b+b.size());
 
