@@ -159,7 +159,6 @@ public class MyLinkedList {
     other.start = null;
     other.end = null;
     other.size = 0;
-    //what to do if other.size == 0??
   }
 
 }
